@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-08-2024 a las 01:41:50
+-- Tiempo de generación: 15-08-2024 a las 01:48:07
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -38,6 +38,22 @@ CREATE TABLE `categoria` (
 
 INSERT INTO `categoria` (`idcategoria`, `Categoria`) VALUES
 (1, 'Sin Categoría');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `clientes`
+--
+
+CREATE TABLE `clientes` (
+  `idclientes` int(11) NOT NULL,
+  `tipo_documento` varchar(10) NOT NULL,
+  `numero_documento` varchar(20) NOT NULL,
+  `nombre_cliente` varchar(100) NOT NULL,
+  `telefono` varchar(15) DEFAULT NULL,
+  `direccion_iddireccion` int(11) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -78,6 +94,22 @@ CREATE TABLE `unidad_medida` (
 INSERT INTO `unidad_medida` (`idunidad_medida`, `unidad_medida`, `unidad_padre_id`) VALUES
 (1, 'Sin Unidad', NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vendedores`
+--
+
+CREATE TABLE `vendedores` (
+  `idvendedores` int(11) NOT NULL,
+  `tipo_documento` varchar(10) NOT NULL,
+  `numero_documento` varchar(20) NOT NULL,
+  `nombres_vendedor` varchar(100) NOT NULL,
+  `telefono` varchar(15) DEFAULT NULL,
+  `direccion_iddireccion` int(11) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Índices para tablas volcadas
 --
@@ -88,6 +120,14 @@ INSERT INTO `unidad_medida` (`idunidad_medida`, `unidad_medida`, `unidad_padre_i
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`idcategoria`),
   ADD UNIQUE KEY `Categoria` (`Categoria`);
+
+--
+-- Indices de la tabla `clientes`
+--
+ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`idclientes`),
+  ADD UNIQUE KEY `numero_documento` (`numero_documento`),
+  ADD KEY `direccion_iddireccion` (`direccion_iddireccion`);
 
 --
 -- Indices de la tabla `direccion`
@@ -107,6 +147,14 @@ ALTER TABLE `unidad_medida`
   ADD KEY `unidad_padre_id` (`unidad_padre_id`);
 
 --
+-- Indices de la tabla `vendedores`
+--
+ALTER TABLE `vendedores`
+  ADD PRIMARY KEY (`idvendedores`),
+  ADD UNIQUE KEY `numero_documento` (`numero_documento`),
+  ADD KEY `direccion_iddireccion` (`direccion_iddireccion`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -115,6 +163,12 @@ ALTER TABLE `unidad_medida`
 --
 ALTER TABLE `categoria`
   MODIFY `idcategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `clientes`
+--
+ALTER TABLE `clientes`
+  MODIFY `idclientes` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `direccion`
@@ -129,14 +183,32 @@ ALTER TABLE `unidad_medida`
   MODIFY `idunidad_medida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `vendedores`
+--
+ALTER TABLE `vendedores`
+  MODIFY `idvendedores` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `clientes`
+--
+ALTER TABLE `clientes`
+  ADD CONSTRAINT `clientes_ibfk_1` FOREIGN KEY (`direccion_iddireccion`) REFERENCES `direccion` (`iddireccion`);
 
 --
 -- Filtros para la tabla `unidad_medida`
 --
 ALTER TABLE `unidad_medida`
   ADD CONSTRAINT `unidad_medida_ibfk_1` FOREIGN KEY (`unidad_padre_id`) REFERENCES `unidad_medida` (`idunidad_medida`);
+
+--
+-- Filtros para la tabla `vendedores`
+--
+ALTER TABLE `vendedores`
+  ADD CONSTRAINT `vendedores_ibfk_1` FOREIGN KEY (`direccion_iddireccion`) REFERENCES `direccion` (`iddireccion`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
