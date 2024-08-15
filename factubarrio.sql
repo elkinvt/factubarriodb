@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-08-2024 a las 13:54:02
+-- Tiempo de generación: 15-08-2024 a las 14:03:56
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -86,6 +86,18 @@ CREATE TABLE `detalle_producto` (
   `precio_unitario` decimal(10,2) NOT NULL,
   `total_precio` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `detalle_producto`
+--
+
+INSERT INTO `detalle_producto` (`factura_idfactura`, `productos_idproductos`, `cantidad`, `precio_unitario`, `total_precio`) VALUES
+(1, 1, 10, 2500.00, 25000.00),
+(1, 2, 5, 1200.00, 6000.00),
+(2, 3, 10, 800.00, 8000.00),
+(2, 4, 20, 1500.00, 30000.00),
+(3, 5, 5, 3500.00, 17500.00),
+(3, 7, 2, 2800.00, 5600.00);
 
 -- --------------------------------------------------------
 
