@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-08-2024 a las 12:28:08
+-- Tiempo de generación: 15-08-2024 a las 12:45:50
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -88,6 +88,24 @@ CREATE TABLE `direccion` (
   `municipio` varchar(50) NOT NULL DEFAULT 'desconocido',
   `pais` varchar(50) NOT NULL DEFAULT 'desconocido'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `direccion`
+--
+
+INSERT INTO `direccion` (`iddireccion`, `tipo_via`, `numero_via`, `letra_bis`, `numero_via_secundaria`, `numero_placa`, `detalles_adicionales`, `barrio`, `ciudad`, `municipio`, `pais`) VALUES
+(1, 'Calle', 26, 'A', 34, 15, 'Apartamento 301', 'Chapinero', 'Bogotá', 'Bogotá', 'Colombia'),
+(2, 'Carrera', 15, NULL, 45, 12, 'Casa', 'El Poblado', 'Medellín', 'Medellín', 'Colombia'),
+(3, 'Avenida', 6, 'B', 30, 10, 'Edificio Central', 'Centro', 'Cali', 'Cali', 'Colombia'),
+(5, 'Carrera', 9, 'C', 23, 45, 'Apartamento 502', 'San Antonio', 'Pereira', 'Pereira', 'Colombia'),
+(6, 'Calle', 11, NULL, 22, 33, 'Casa esquinera', 'Santa Rosa', 'Manizales', 'Manizales', 'Colombia'),
+(7, 'Avenida', 7, 'D', 40, 20, 'Centro Comercial', 'Versalles', 'Barranquilla', 'Barranquilla', 'Colombia'),
+(8, 'Carrera', 22, 'E', 14, 9, 'Conjunto Residencial', 'La Flora', 'Cali', 'Cali', 'Colombia'),
+(10, 'Avenida', 5, NULL, 60, 18, 'Oficina 204', 'Centro Internacional', 'Bogotá', 'Bogotá', 'Colombia'),
+(11, 'Calle', 12, 'F', 50, 17, 'Apartamento 101', 'San Victorino', 'Bogotá', 'Bogotá', 'Colombia'),
+(12, 'Carrera', 18, NULL, 67, 34, 'Casa bifamiliar', 'Las Acacias', 'Medellín', 'Medellín', 'Colombia'),
+(14, 'Calle', 5, NULL, 14, 11, 'Conjunto Los Pinos', 'Ciudad Jardín', 'Cali', 'Cali', 'Colombia'),
+(15, 'Carrera', 21, 'H', 31, 77, 'Oficina 301', 'Centro', 'Bucaramanga', 'Bucaramanga', 'Colombia');
 
 -- --------------------------------------------------------
 
@@ -239,13 +257,13 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `idclientes` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idclientes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `direccion`
 --
 ALTER TABLE `direccion`
-  MODIFY `iddireccion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `iddireccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `factura`
