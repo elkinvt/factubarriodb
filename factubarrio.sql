@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-08-2024 a las 12:45:50
+-- Tiempo de generación: 15-08-2024 a las 12:59:54
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -54,6 +54,17 @@ CREATE TABLE `clientes` (
   `direccion_iddireccion` int(11) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`idclientes`, `tipo_documento`, `numero_documento`, `nombres_cliente`, `telefono`, `direccion_iddireccion`, `email`) VALUES
+(13, 'CC', '123456789', 'Juan Pérez', '3111234567', 1, 'juan.perez@factubarrio.com'),
+(14, 'CC', '987654321', 'María Rodríguez', '3129876543', 2, 'maria.rodriguez@factubarrio.com'),
+(15, 'NIT', '900123456', 'Empresa XYZ', '3151239876', 3, 'contacto@empresaxyz.com'),
+(16, 'CE', '654321987', 'Ana María Hernández', '3136543219', 5, 'ana.hernandez@factubarrio.com'),
+(17, 'CC', '789123456', 'Luisa Fernández', '3187891234', 8, 'luisa.fernandez@factubarrio.com');
 
 -- --------------------------------------------------------
 
@@ -257,7 +268,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `idclientes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idclientes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `direccion`
