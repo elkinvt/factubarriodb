@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-08-2024 a las 12:59:54
+-- Tiempo de generación: 15-08-2024 a las 13:07:17
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -188,6 +188,17 @@ CREATE TABLE `vendedores` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Volcado de datos para la tabla `vendedores`
+--
+
+INSERT INTO `vendedores` (`idvendedores`, `tipo_documento`, `numero_documento`, `nombres_vendedor`, `telefono`, `direccion_iddireccion`, `email`) VALUES
+(1, 'CC', '1029384756', 'Sofía Ramírez', '3111029384', 15, 'sofia.ramirez@ejemplo.com'),
+(2, 'CC', '5647382910', 'Miguel Torres', '3105647382', 6, 'miguel.torres@ejemplo.com'),
+(3, 'CE', '1092837465', 'Valentina Morales', '3151092837', 12, 'valentina.morales@ejemplo.com'),
+(4, 'CC', '4321987650', 'Camila López', '3204321987', 7, 'camila.lopez@ejemplo.com'),
+(5, 'CC', '7685940321', 'Andrés García', '3177685940', 11, 'andres.garcia@ejemplo.com');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -298,7 +309,7 @@ ALTER TABLE `unidad_medida`
 -- AUTO_INCREMENT de la tabla `vendedores`
 --
 ALTER TABLE `vendedores`
-  MODIFY `idvendedores` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idvendedores` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
