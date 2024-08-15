@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-08-2024 a las 02:00:27
+-- Tiempo de generación: 15-08-2024 a las 12:28:08
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -58,6 +58,20 @@ CREATE TABLE `clientes` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `detalle_producto`
+--
+
+CREATE TABLE `detalle_producto` (
+  `factura_idfactura` int(11) NOT NULL,
+  `productos_idproductos` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `precio_unitario` decimal(10,2) NOT NULL,
+  `total_precio` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `direccion`
 --
 
@@ -73,6 +87,23 @@ CREATE TABLE `direccion` (
   `ciudad` varchar(50) NOT NULL DEFAULT 'desconocido',
   `municipio` varchar(50) NOT NULL DEFAULT 'desconocido',
   `pais` varchar(50) NOT NULL DEFAULT 'desconocido'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `factura`
+--
+
+CREATE TABLE `factura` (
+  `idfactura` int(11) NOT NULL,
+  `clientes_idclientes` int(11) NOT NULL,
+  `vendedores_idvendedores` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `hora` time NOT NULL,
+  `total_valor` decimal(10,2) NOT NULL,
+  `impuesto` decimal(10,2) NOT NULL,
+  `descuento` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -147,6 +178,13 @@ ALTER TABLE `clientes`
   ADD KEY `direccion_iddireccion` (`direccion_iddireccion`);
 
 --
+-- Indices de la tabla `detalle_producto`
+--
+ALTER TABLE `detalle_producto`
+  ADD PRIMARY KEY (`factura_idfactura`,`productos_idproductos`),
+  ADD KEY `productos_idproductos` (`productos_idproductos`);
+
+--
 -- Indices de la tabla `direccion`
 --
 ALTER TABLE `direccion`
@@ -154,6 +192,14 @@ ALTER TABLE `direccion`
   ADD KEY `idx_ciudad` (`ciudad`),
   ADD KEY `idx_barrio` (`barrio`),
   ADD KEY `idx_pais` (`pais`);
+
+--
+-- Indices de la tabla `factura`
+--
+ALTER TABLE `factura`
+  ADD PRIMARY KEY (`idfactura`),
+  ADD KEY `clientes_idclientes` (`clientes_idclientes`),
+  ADD KEY `vendedores_idvendedores` (`vendedores_idvendedores`);
 
 --
 -- Indices de la tabla `productos`
@@ -202,6 +248,12 @@ ALTER TABLE `direccion`
   MODIFY `iddireccion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `factura`
+--
+ALTER TABLE `factura`
+  MODIFY `idfactura` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
@@ -228,6 +280,20 @@ ALTER TABLE `vendedores`
 --
 ALTER TABLE `clientes`
   ADD CONSTRAINT `clientes_ibfk_1` FOREIGN KEY (`direccion_iddireccion`) REFERENCES `direccion` (`iddireccion`);
+
+--
+-- Filtros para la tabla `detalle_producto`
+--
+ALTER TABLE `detalle_producto`
+  ADD CONSTRAINT `detalle_producto_ibfk_1` FOREIGN KEY (`factura_idfactura`) REFERENCES `factura` (`idfactura`),
+  ADD CONSTRAINT `detalle_producto_ibfk_2` FOREIGN KEY (`productos_idproductos`) REFERENCES `productos` (`idproductos`);
+
+--
+-- Filtros para la tabla `factura`
+--
+ALTER TABLE `factura`
+  ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`clientes_idclientes`) REFERENCES `clientes` (`idclientes`),
+  ADD CONSTRAINT `factura_ibfk_2` FOREIGN KEY (`vendedores_idvendedores`) REFERENCES `vendedores` (`idvendedores`);
 
 --
 -- Filtros para la tabla `productos`
