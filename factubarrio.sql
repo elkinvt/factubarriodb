@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-08-2024 a las 01:48:07
+-- Tiempo de generación: 15-08-2024 a las 02:00:27
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -49,7 +49,7 @@ CREATE TABLE `clientes` (
   `idclientes` int(11) NOT NULL,
   `tipo_documento` varchar(10) NOT NULL,
   `numero_documento` varchar(20) NOT NULL,
-  `nombre_cliente` varchar(100) NOT NULL,
+  `nombres_cliente` varchar(100) NOT NULL,
   `telefono` varchar(15) DEFAULT NULL,
   `direccion_iddireccion` int(11) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL
@@ -73,6 +73,23 @@ CREATE TABLE `direccion` (
   `ciudad` varchar(50) NOT NULL DEFAULT 'desconocido',
   `municipio` varchar(50) NOT NULL DEFAULT 'desconocido',
   `pais` varchar(50) NOT NULL DEFAULT 'desconocido'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productos`
+--
+
+CREATE TABLE `productos` (
+  `idproductos` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `descripcion` varchar(255) DEFAULT NULL,
+  `categoria_idcategoria` int(11) DEFAULT 1,
+  `unidad_medida_idunidad_medida` int(11) DEFAULT 1,
+  `presentacion` varchar(50) DEFAULT NULL,
+  `cantidad_stock` int(11) NOT NULL,
+  `precio_unitario` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -139,6 +156,14 @@ ALTER TABLE `direccion`
   ADD KEY `idx_pais` (`pais`);
 
 --
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`idproductos`),
+  ADD KEY `categoria_idcategoria` (`categoria_idcategoria`),
+  ADD KEY `unidad_medida_idunidad_medida` (`unidad_medida_idunidad_medida`);
+
+--
 -- Indices de la tabla `unidad_medida`
 --
 ALTER TABLE `unidad_medida`
@@ -177,6 +202,12 @@ ALTER TABLE `direccion`
   MODIFY `iddireccion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `productos`
+--
+ALTER TABLE `productos`
+  MODIFY `idproductos` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `unidad_medida`
 --
 ALTER TABLE `unidad_medida`
@@ -197,6 +228,13 @@ ALTER TABLE `vendedores`
 --
 ALTER TABLE `clientes`
   ADD CONSTRAINT `clientes_ibfk_1` FOREIGN KEY (`direccion_iddireccion`) REFERENCES `direccion` (`iddireccion`);
+
+--
+-- Filtros para la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`categoria_idcategoria`) REFERENCES `categoria` (`idcategoria`),
+  ADD CONSTRAINT `productos_ibfk_2` FOREIGN KEY (`unidad_medida_idunidad_medida`) REFERENCES `unidad_medida` (`idunidad_medida`);
 
 --
 -- Filtros para la tabla `unidad_medida`
