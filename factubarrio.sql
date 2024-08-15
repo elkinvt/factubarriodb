@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-08-2024 a las 13:14:33
+-- Tiempo de generación: 15-08-2024 a las 13:28:12
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -176,7 +176,16 @@ CREATE TABLE `unidad_medida` (
 --
 
 INSERT INTO `unidad_medida` (`idunidad_medida`, `unidad_medida`, `unidad_padre_id`) VALUES
-(1, 'Sin Unidad', NULL);
+(1, 'Sin Unidad', NULL),
+(2, 'Kilogramo', NULL),
+(3, 'Litro', NULL),
+(4, 'Unidad', NULL),
+(5, 'Paquete', NULL),
+(6, 'Caja', NULL),
+(7, 'Gramo', 2),
+(8, 'Mililitro', 3),
+(9, 'Botella', 5),
+(10, 'sachet', 6);
 
 -- --------------------------------------------------------
 
@@ -310,7 +319,7 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `unidad_medida`
 --
 ALTER TABLE `unidad_medida`
-  MODIFY `idunidad_medida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idunidad_medida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `vendedores`
