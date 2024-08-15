@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-08-2024 a las 13:28:12
+-- Tiempo de generación: 15-08-2024 a las 13:47:53
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -159,6 +159,22 @@ CREATE TABLE `productos` (
   `precio_unitario` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`idproductos`, `nombre`, `descripcion`, `categoria_idcategoria`, `unidad_medida_idunidad_medida`, `presentacion`, `cantidad_stock`, `precio_unitario`) VALUES
+(1, 'Arroz', 'Arroz blanco de grano largo', 2, 7, 'Bolsa', 100, 2500.00),
+(2, 'Leche', 'Leche entera pasteurizada', 3, 8, 'Botella', 50, 1200.00),
+(3, 'Jabón', 'Jabón de tocador', 7, 10, 'caja', 200, 800.00),
+(4, 'Pan', 'Pan integral de molde', 8, 4, 'Paquete', 100, 1500.00),
+(5, 'Aceite', 'Aceite vegetal', 2, 3, 'Botella', 60, 3500.00),
+(6, 'Azúcar', 'Azúcar blanca refinada', 2, NULL, 'Bolsa', 150, 1800.00),
+(7, 'Mantequilla', 'Mantequilla con sal', 2, NULL, 'Tarrina', 40, 2800.00),
+(8, 'Papel Higiénico', 'Papel higiénico doble hoja', NULL, 4, 'Paquete', 80, 4200.00),
+(9, 'Detergente', 'Detergente en polvo', NULL, 4, 'bolsa', 90, 3000.00),
+(10, 'Galletas', 'Galletas de chocolate', NULL, NULL, 'Paquete', 75, 2200.00);
+
 -- --------------------------------------------------------
 
 --
@@ -313,7 +329,7 @@ ALTER TABLE `factura`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `idproductos` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idproductos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `unidad_medida`
