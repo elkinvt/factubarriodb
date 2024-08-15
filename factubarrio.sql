@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-08-2024 a las 13:47:53
+-- Tiempo de generación: 15-08-2024 a las 13:54:02
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -141,6 +141,15 @@ CREATE TABLE `factura` (
   `impuesto` decimal(10,2) NOT NULL,
   `descuento` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `factura`
+--
+
+INSERT INTO `factura` (`idfactura`, `clientes_idclientes`, `vendedores_idvendedores`, `fecha`, `hora`, `total_valor`, `impuesto`, `descuento`) VALUES
+(1, 14, 3, '2024-08-15', '10:30:00', 25000.00, 3000.00, 500.00),
+(2, 17, 5, '2024-08-14', '14:45:00', 40000.00, 4800.00, 800.00),
+(3, 13, 2, '2024-08-13', '09:15:00', 18000.00, 2160.00, 300.00);
 
 -- --------------------------------------------------------
 
@@ -323,7 +332,7 @@ ALTER TABLE `direccion`
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `idfactura` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idfactura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
