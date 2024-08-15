@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-08-2024 a las 13:07:17
+-- Tiempo de generación: 15-08-2024 a las 13:14:33
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -37,6 +37,13 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`idcategoria`, `Categoria`) VALUES
+(2, 'abarrotes'),
+(4, 'bebidas'),
+(5, 'carnes y embutidos'),
+(6, 'frutas y verduras'),
+(3, 'lacteos'),
+(7, 'limpieza y hogar'),
+(8, 'panaderia'),
 (1, 'Sin Categoría');
 
 -- --------------------------------------------------------
@@ -273,7 +280,7 @@ ALTER TABLE `vendedores`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `idcategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idcategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
